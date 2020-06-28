@@ -1,26 +1,42 @@
 {% load static %}
 <html>
     <head>
-        <title>Heil's blog</title>
+        <title>HEIL'S BLOG</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap" rel="stylesheet" type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
     <div class="page-header">
-      {% if user.is_authenticated %}
-          <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-      {% endif %}
-        <h1><a href="/">Heil's blog</a></h1>
+        <ul>
+          <li><h1 id="header-button"><a href="/">HEIL'S BLOG</a></h1></li>
+          {% if user.is_authenticated %}
+            <li><h2>
+             <a href="{% url 'post_new' %}" id="edit"><span class="glyphicon glyphicon-plus"></span></a></h2>
+           </li>
+          {% endif %}
+          <li><h2><a href="about">About</a></h2></li>
+          <li><h2><a href="/">Posts</a></h2></li>
+        </ul>
     </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
+    <div class="ccontainer">
+      <img src="https://images.unsplash.com/photo-1591510094199-64e202e5601d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Circles" class="banner-image">
+      <div><h1 class="centred">STUDYING AT BIRMINGHAM UNI</h1></div>
+    </div>
+
+    <div class="content container" id="page-container">
+      <div class="row" id="content-wrap">
+          <div class="col-md-12">
+          {% block content %}
+          {% endblock %}
         </div>
+      </div>
+      <footer id="footer">
+        <p>Author: Heil Park</p>
+        <p><a href="mailto:hxp881@student.bham.ac.uk">hxp881@student.bham.ac.uk</a>
+        </p>
+      </footer>
     </div>
 </body>
 </html>
